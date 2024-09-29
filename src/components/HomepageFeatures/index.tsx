@@ -1,55 +1,74 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import MultipleSolvers from "@site/static/img/solver.svg";
+import Materials from "@site/static/img/materials.svg";
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
+  image: () => React.ReactElement;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: "3D Interactive Editor",
+    image: () => (
+      <img
+        title="3D Interactive Editor"
+        alt="3D Interactive Editor"
+        className={styles.featureImage}
+        src={"/img/editor-screen-shot.png"}
+      />
+    ),
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Configure your project using an interactive 3D editor. Visualize
+        sources, receivers, materials, and solutions.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: "Multiple Solvers",
+    image: () => (
+      <MultipleSolvers
+        title="Multiple Solvers"
+        className={clsx(styles.multipleSolversLogo, styles.featureSvg)}
+      />
+    ),
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Band comes packed with a variety of solvers, including a raytracer, 2D
+        FDTD, Image Source Method, and more.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: "Huge Material Library",
+    image: () => (
+      <Materials
+        title="Huge Material Library"
+        className={clsx(styles.materialsLogo, styles.featureSvg)}
+      />
+    ),
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Browse over 1,000 acoustic materials to apply to your model, or,
+        configure your own!
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature(props: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+    <div className={clsx("col col--4")}>
+      <div className={clsx("text--center", styles.cardImageContainer)}>
+        <props.image />
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+        <Heading as="h3">{props.title}</Heading>
+        <p>{props.description}</p>
       </div>
     </div>
   );

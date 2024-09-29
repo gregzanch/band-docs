@@ -9,3 +9,18 @@
   height: 200px;
   width: 200px;
 }
+
+.featureImage {
+  border: 4px solid var(--text-contrast);
+  height: 200px;
+  border-radius: var(--ifm-code-border-radius);
+}
+
+.cardImageContainer {
+  margin-bottom: 16px;
+}
+
+.multipleSolversLogo,
+.materialsLogo {
+  fill: var(--text-contrast);
+}
